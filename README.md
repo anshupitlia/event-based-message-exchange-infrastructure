@@ -11,5 +11,15 @@ The current file `configure-aiven.sh` just helps in basic understanding as of no
 
 Similarly we should this repo (or a modularized version if needed) for creation of cassandra on cloud as well. It gives better configurability. 
 
+Here is the view, how they will be created: 
 
+![Services](docs/services.png)
+
+![topics](docs/topics.png)
+
+![mirror-maker-config](docs/mirror-maker.png)
+
+![DB](docs/DB.png)
+
+We also should take care of the other infrastructure, like where to host our frontend and backend services. 
 

@@ -7,6 +7,11 @@ avn service create product-information-system-demo             \
   -c kafka_connect=true                   \
   --disk-space-gib 600
 
+avn service topic-create product-information-system-demo US-product-price-updates  \
+  --partitions 3                              \
+  --replication 2                             \
+  --retention 2
+
 avn service create product-promotion-system-demo             \
   --service-type kafka                    \
   --cloud azure-south-africa-north             \
@@ -28,10 +33,10 @@ avn mirrormaker replication-flow create mirrormaker-product-information-system \
         "emit_heartbeats_enabled": true,
         "enabled": true,
         "replication_policy_class": "org.apache.kafka.connect.mirror.DefaultReplicationPolicy",
-        "source_cluster": "kafka-source-alias",
+        "source_cluster": "product-information-system-cluster-alias",
         "sync_group_offsets_enabled": true,
         "sync_group_offsets_interval_seconds": 60,
-        "target_cluster": "kafka-target-alias",
+        "target_cluster": "product-promotion-system-cluster-alias",
         "topics": [
             "US-product-price-updates.*"
         ],
